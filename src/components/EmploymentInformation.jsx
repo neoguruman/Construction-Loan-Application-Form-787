@@ -43,7 +43,7 @@ const EmploymentInformation = () => {
               placeholder={placeholder}
             />
           )}
-          <button 
+          <button
             onClick={() => clearFormField(field)}
             className="ml-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg"
             title="Clear field"
@@ -62,15 +62,32 @@ const EmploymentInformation = () => {
       transition={{ duration: 0.5 }}
     >
       <h2 className="text-3xl font-bold text-gray-800 mb-8">Employment Information</h2>
-      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Borrower Column */}
         <div className="space-y-6">
           <h3 className="text-xl font-semibold text-gray-800 border-b pb-2">Borrower</h3>
-          
-          {renderFormField("Name & Address of Employer", 'borrowerEmployer', 'text', "Company Name\nStreet Address\nCity, State ZIP", 3)}
-
-          <div className="flex items-center space-x-4">
+          <div className="form-field">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Name & Address of Employer
+            </label>
+            <div className="flex items-start">
+              <textarea
+                value={formData.borrowerEmployer || ''}
+                onChange={(e) => updateFormData('borrowerEmployer', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                rows={3}
+                placeholder="Company Name&#10;Street Address&#10;City, State ZIP"
+              />
+              <button
+                onClick={() => clearFormField('borrowerEmployer')}
+                className="ml-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg"
+                title="Clear field"
+              >
+                <SafeIcon icon={FiX} className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+          <div className="form-field">
             <label className="flex items-center">
               <input
                 type="checkbox"
@@ -80,42 +97,64 @@ const EmploymentInformation = () => {
               />
               Self Employed
             </label>
-            {formData.borrowerSelfEmployed && (
-              <button 
-                onClick={() => updateFormData('borrowerSelfEmployed', false)}
-                className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg"
-                title="Clear selection"
-              >
-                <SafeIcon icon={FiX} className="w-3 h-3" />
-              </button>
-            )}
           </div>
-
           <div className="grid grid-cols-2 gap-4">
-            {renderFormField("Yrs. on this job", 'borrowerYearsJob', 'number', "0.0")}
-            {renderFormField("Yrs. employed in this line of work/profession", 'borrowerYearsField', 'number', "0.0")}
+            <div className="form-field">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yrs. on this job
+              </label>
+              <input
+                type="number"
+                value={formData.borrowerYearsJob || ''}
+                onChange={(e) => updateFormData('borrowerYearsJob', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="0.0"
+                step="0.1"
+              />
+            </div>
+            <div className="form-field">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yrs. employed in this line of work/profession
+              </label>
+              <input
+                type="number"
+                value={formData.borrowerYearsField || ''}
+                onChange={(e) => updateFormData('borrowerYearsField', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="0.0"
+                step="0.1"
+              />
+            </div>
           </div>
-
-          {renderFormField("Position/Title/Type of Business", 'borrowerPosition')}
-          {renderFormField("Business Phone (incl. area code)", 'borrowerBusinessPhone', 'tel', "(XXX) XXX-XXXX")}
-
-          <div className="border-t pt-4">
-            <h4 className="text-lg font-medium text-gray-800 mb-4">
-              Previous Employment (if less than 2 years at current job)
-            </h4>
-            
-            {renderFormField("Name & Address of Previous Employer", 'borrowerPreviousEmployer', 'text', "Previous Company Name\nStreet Address\nCity, State ZIP", 3)}
-            {renderFormField("Monthly Income", 'borrowerPreviousIncome', 'text', "$0.00")}
-          </div>
+          {renderFormField('Position/Title/Type of Business', 'borrowerPosition')}
+          {renderFormField('Business Phone (incl. area code)', 'borrowerBusinessPhone', 'tel', '(XXX) XXX-XXXX')}
         </div>
 
         {/* Co-Borrower Column */}
         <div className="space-y-6">
           <h3 className="text-xl font-semibold text-gray-800 border-b pb-2">Co-Borrower</h3>
-          
-          {renderFormField("Name & Address of Employer", 'coBorrowerEmployer', 'text', "Company Name\nStreet Address\nCity, State ZIP", 3)}
-
-          <div className="flex items-center space-x-4">
+          <div className="form-field">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Name & Address of Employer
+            </label>
+            <div className="flex items-start">
+              <textarea
+                value={formData.coBorrowerEmployer || ''}
+                onChange={(e) => updateFormData('coBorrowerEmployer', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                rows={3}
+                placeholder="Company Name&#10;Street Address&#10;City, State ZIP"
+              />
+              <button
+                onClick={() => clearFormField('coBorrowerEmployer')}
+                className="ml-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg"
+                title="Clear field"
+              >
+                <SafeIcon icon={FiX} className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+          <div className="form-field">
             <label className="flex items-center">
               <input
                 type="checkbox"
@@ -125,33 +164,37 @@ const EmploymentInformation = () => {
               />
               Self Employed
             </label>
-            {formData.coBorrowerSelfEmployed && (
-              <button 
-                onClick={() => updateFormData('coBorrowerSelfEmployed', false)}
-                className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg"
-                title="Clear selection"
-              >
-                <SafeIcon icon={FiX} className="w-3 h-3" />
-              </button>
-            )}
           </div>
-
           <div className="grid grid-cols-2 gap-4">
-            {renderFormField("Yrs. on this job", 'coBorrowerYearsJob', 'number', "0.0")}
-            {renderFormField("Yrs. employed in this line of work/profession", 'coBorrowerYearsField', 'number', "0.0")}
+            <div className="form-field">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yrs. on this job
+              </label>
+              <input
+                type="number"
+                value={formData.coBorrowerYearsJob || ''}
+                onChange={(e) => updateFormData('coBorrowerYearsJob', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="0.0"
+                step="0.1"
+              />
+            </div>
+            <div className="form-field">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yrs. employed in this line of work/profession
+              </label>
+              <input
+                type="number"
+                value={formData.coBorrowerYearsField || ''}
+                onChange={(e) => updateFormData('coBorrowerYearsField', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="0.0"
+                step="0.1"
+              />
+            </div>
           </div>
-
-          {renderFormField("Position/Title/Type of Business", 'coBorrowerPosition')}
-          {renderFormField("Business Phone (incl. area code)", 'coBorrowerBusinessPhone', 'tel', "(XXX) XXX-XXXX")}
-
-          <div className="border-t pt-4">
-            <h4 className="text-lg font-medium text-gray-800 mb-4">
-              Previous Employment (if less than 2 years at current job)
-            </h4>
-            
-            {renderFormField("Name & Address of Previous Employer", 'coBorrowerPreviousEmployer', 'text', "Previous Company Name\nStreet Address\nCity, State ZIP", 3)}
-            {renderFormField("Monthly Income", 'coBorrowerPreviousIncome', 'text', "$0.00")}
-          </div>
+          {renderFormField('Position/Title/Type of Business', 'coBorrowerPosition')}
+          {renderFormField('Business Phone (incl. area code)', 'coBorrowerBusinessPhone', 'tel', '(XXX) XXX-XXXX')}
         </div>
       </div>
 
@@ -165,7 +208,6 @@ const EmploymentInformation = () => {
           <SafeIcon icon={FiArrowLeft} className="w-5 h-5" />
           <span>Previous</span>
         </motion.button>
-        
         <motion.button
           onClick={handleNext}
           className="flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"

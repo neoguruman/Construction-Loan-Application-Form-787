@@ -67,16 +67,12 @@ const FormProvider = ({ children }) => {
     borrowerYearsField: '',
     borrowerPosition: '',
     borrowerBusinessPhone: '',
-    borrowerPreviousEmployer: '',
-    borrowerPreviousIncome: '',
     coBorrowerEmployer: '',
     coBorrowerSelfEmployed: false,
     coBorrowerYearsJob: '',
     coBorrowerYearsField: '',
     coBorrowerPosition: '',
     coBorrowerBusinessPhone: '',
-    coBorrowerPreviousEmployer: '',
-    coBorrowerPreviousIncome: '',
 
     // Income Information
     borrowerBaseIncome: '',
@@ -96,6 +92,7 @@ const FormProvider = ({ children }) => {
 
     // Housing Expenses
     currentRent: '',
+    currentMortgage: '',
     proposedMortgage: '',
     otherFinancing: '',
     hazardInsurance: '',
@@ -176,16 +173,12 @@ const FormProvider = ({ children }) => {
       'borrowerYearsField',
       'borrowerPosition',
       'borrowerBusinessPhone',
-      'borrowerPreviousEmployer',
-      'borrowerPreviousIncome',
       'coBorrowerEmployer',
       'coBorrowerSelfEmployed',
       'coBorrowerYearsJob',
       'coBorrowerYearsField',
       'coBorrowerPosition',
-      'coBorrowerBusinessPhone',
-      'coBorrowerPreviousEmployer',
-      'coBorrowerPreviousIncome'
+      'coBorrowerBusinessPhone'
     ],
     incomeInfo: [
       'borrowerBaseIncome',
@@ -205,6 +198,7 @@ const FormProvider = ({ children }) => {
     ],
     housingExpenses: [
       'currentRent',
+      'currentMortgage',
       'proposedMortgage',
       'otherFinancing',
       'hazardInsurance',
